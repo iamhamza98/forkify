@@ -1,0 +1,27 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "fotkigy-project\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[f\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolehle/forkify.git"
+  },
+  "author": "Nicole Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolehle/forkify/issues"
+  },
+  "homepage": "https://github.com/nicolehle/forkify#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
