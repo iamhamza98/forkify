@@ -15,4 +15,7 @@ A recipe searching application
 *add babel moduel into webpack.config.js<br>
 *add preset code on .barbelrc<br>
 *babel-polyfill
-*add polyfill into entry of the webpack.config
+*add polyfill into entry of the webpack.config.
+
+3. Start building forkify app.
+*Architecture - MVC (model, controller, view)<br>
