@@ -1,9 +1,11 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Like from './models/Like';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likeView from './views/likeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
 /**
@@ -94,7 +96,10 @@ const controlRecipe = async () => {
 
       // 5. Render recipe
       clearLoader();
-      recipeView.renderRecipe(state.recipe);
+      recipeView.renderRecipe(
+        state.recipe,
+        state.likes.isLiked(id)
+      );
     }
     catch(err) {
       alert(`Error processing recipes.`);
@@ -120,6 +125,60 @@ const controlRecipe = async () => {
       listView.renderItem(item);
    });
  };
+
+
+
+ /**
+ * Like CONTROLLER
+ **/
+
+
+const controlLike = () => {
+  // Create a new Like if there's none
+  if(!state.likes) state.likes = new Like();
+
+  const currentID = state.recipe.id;
+  // if item is NOT yet liked
+  if(!state.likes.isLiked(currentID)){
+    // add item into liked list
+    const newLike = state.likes.addLike(
+      currentID,
+      state.recipe.title,
+      state.recipe.author,
+      state.recipe.image
+    )
+    // toggle menu btn
+    likeView.toggleLikeBtn(true);
+    // add like to UI
+    likeView.renderLike(newLike);
+  }
+  // if item HAS benn liked
+  else {
+    // delete item into liked list
+    state.likes.deleteLike(currentID);
+    // toggle menu btn
+    likeView.toggleLikeBtn(false);
+    // delete like to UI
+    likeView.deleteLike(currentID);
+  }
+   likeView.toggleLikeMenu(state.likes.getNumLikes());
+};
+
+// Handling localStorage on load
+  window.addEventListener('load', () => {
+    state.likes = new Like();
+
+    // Retrive data from localstorage
+    state.likes.readStorage()
+
+    // Toggle likemenu
+    likeView.toggleLikeMenu(state.likes.getNumLikes());
+
+    // Render existing menu
+    state.likes.likes.forEach(like => likeView.renderLike(like));
+  })
+
+
 
 
  // Handling update and delete list items
@@ -156,6 +215,9 @@ const controlRecipe = async () => {
     }
     else if(e.target.matches('.recipe__btn--add, .recipe__btn--add *')){
       controllList();
+    }
+    else if(e.target.matches('.recipe__love, .recipe__love *')){
+      controlLike();
     }
   }
 );
