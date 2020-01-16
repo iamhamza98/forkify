@@ -1,8 +1,7 @@
 # forkify
 A recipe searching application
 
-## Workflow
-
+### Setting
 1. Be ready with starter packing and setting.  
 *dist(distribution) - css, img<br>*src(source) - js, index.html<br>
 **css, js in the dist and src directories are main to store imported code from another css and js**
