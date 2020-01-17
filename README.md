@@ -18,3 +18,7 @@ A recipe searching application
 
 3. Start building forkify app.
 *Architecture - MVC (model, controller, view)<br>
+
+### Live Demo
+https://epic-hopper-958950.netlify.com/ <br>
+Only Bacon, Pizza, Pasta recipes are available.
